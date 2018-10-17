@@ -80,14 +80,14 @@ RCT_EXPORT_METHOD(revokeAccess)
     }
 
     NSDictionary *body = @{
-                           @"name": user.profile.name,
-                           @"givenName": user.profile.givenName,
+                           @"name": user.profile.name ? user.profile.name : @"",
+                           @"givenName": user.profile.givenName ? user.profile.givenName : @"",
                            @"familyName": user.profile.familyName ? user.profile.familyName : @"",
-                           @"id": user.userID,
+                           @"id": user.userID ? user.userID : @"",
                            @"photo": imageURL ? imageURL.absoluteString : [NSNull null],
-                           @"email": user.profile.email,
-                           @"idToken": user.authentication.idToken,
-                           @"accessToken": user.authentication.accessToken,
+                           @"email": user.profile.email ? user.profile.email : @"",
+                           @"idToken": user.authentication.idToken ? user.authentication.idToken : @"",
+                           @"accessToken": user.authentication.accessToken ? user.authentication.accessToken : @"",
                            @"serverAuthCode": user.serverAuthCode ? user.serverAuthCode : [NSNull null],
                            @"accessTokenExpirationDate": [NSNumber numberWithDouble:user.authentication.accessTokenExpirationDate.timeIntervalSinceNow]
                            };
